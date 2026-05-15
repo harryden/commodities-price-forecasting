@@ -98,7 +98,7 @@ commodities-price-forecasting/
 
 ## Background
 
-This project was built for TMS088 (Financial Time Series) at Chalmers University, Spring 2026.
+This project was built for TMS088 (Financial Time Series) at Chalmers University, Spring 2025.
 
 **My Contribution:** I was solely responsible for Task 3 (Extrapolation) of a 6-person group project. This included:
 - Designing and implementing the entire forecasting pipeline (all code in this repo)
