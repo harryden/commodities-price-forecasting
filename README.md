@@ -1,6 +1,6 @@
 # Commodity Price Forecasting
 
-Rolling-origin evaluation framework for time series forecasting. Compares ARIMA and GARCH models against random walk baselines on commodity price data.
+Rolling-origin evaluation framework for time series forecasting. Evaluates Random Walk and ARIMA mean models paired with constant variance baselines on commodity price data; ARCH and GARCH volatility models are implemented in `src/models.py` and evaluated in the accompanying report.
 
 ## Overview
 
@@ -9,7 +9,7 @@ This project implements proper temporal cross-validation for evaluating forecast
 **Key Features:**
 - **Rolling-origin validation**: Models only see observations prior to each forecast origin, preventing look-ahead leakage
 - **Modular architecture**: Separate components for loading, transforms, models, evaluation, and diagnostics
-- **Multiple model classes**: Random walk, ARIMA(p,d,q), and GARCH family volatility models
+- **Multiple model classes**: Random walk, ARIMA(p,d,q), and ConstantVar variance models in the committed experiment; ARCH and GARCH family classes are implemented in `src/models.py`
 - **Comprehensive metrics**: RMSE, MAE, MAPE for point forecasts; MSE/MAE for variance forecasts
 - **Diagnostic plots**: Residual ACF and squared-ACF to detect model misspecification
 
@@ -74,6 +74,8 @@ runner = FullRunner(
 )
 runner.run()
 ```
+
+Note on execution: `notebooks/experiment.ipynb` is committed unexecuted (`execution_count: null`, output directory gitignored, no output CSVs). In `src/full_runner.py`, programmatic execution via `runner.run()` references `self.vol_ctor` on lines 64 and 92 while `__init__` sets `self.var_ctor`, requiring an attribute alignment before running end-to-end. Benchmark values and model selections are cited directly from `docs/project_report.pdf`.
 
 ## Project Structure
 
