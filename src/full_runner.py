@@ -36,6 +36,7 @@ class FullRunner:
         self.output_root = output_root
         self.mean_ctor = mean_ctor
         self.var_ctor = var_ctor
+        self.vol_ctor = var_ctor
         self.seasonal_period = seasonal_period
         self.horizon = horizon
         self.start_frac = start_frac
