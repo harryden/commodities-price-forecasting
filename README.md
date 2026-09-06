@@ -7,7 +7,7 @@ Rolling-origin evaluation framework for time series forecasting. Compares ARIMA 
 This project implements proper temporal cross-validation for evaluating forecasting models. The key insight: **random walk baselines are surprisingly hard to beat** at multi-step horizons.
 
 **Key Features:**
-- **Rolling-origin validation**: No data leakage—models only see past data at each forecast origin
+- **Rolling-origin validation**: Models only see observations prior to each forecast origin, preventing look-ahead leakage
 - **Modular architecture**: Separate components for loading, transforms, models, evaluation, and diagnostics
 - **Multiple model classes**: Random walk, ARIMA(p,d,q), and GARCH family volatility models
 - **Comprehensive metrics**: RMSE, MAE, MAPE for point forecasts; MSE/MAE for variance forecasts
@@ -96,16 +96,15 @@ commodities-price-forecasting/
 └── output/                  # Generated results (git-ignored)
 ```
 
-## Background
+## Context
 
-This project was built for TMS088 (Financial Time Series) at Chalmers University, Spring 2025.
+Built for TMS088 (Financial Time Series) at Chalmers University of Technology, Spring 2025.
 
-**My Contribution:** I was solely responsible for Task 3 (Extrapolation) of a 6-person group project. This included:
-- Designing and implementing the entire forecasting pipeline (all code in this repo)
-- Building the rolling-origin validation framework
-- Systematic model comparison (Random Walk → ARIMA → GARCH)
-- Writing the methodology, results, and analysis for Task 3 in the final report
+In a 6-person group project analyzing 7 commodity series across four tasks (data analysis, interpolation, extrapolation, and trading strategies), this repository implements the Task 3 extrapolation component:
+- Rolling-origin validation framework for multi-step price forecasting
+- Implementation of mean models (random walk with/without drift, ARIMA) and volatility models (ARCH, GARCH)
+- Evaluation metrics and residual diagnostic plotting (ACF, squared ACF)
 
-The complete group project analyzed 7 commodity time series across 4 tasks: data analysis, interpolation (filling gaps), extrapolation (forecasting 200 days), and investment strategies. See [full report (26 pages)](docs/project_report.pdf) for complete context.
+The full 26-page project report is available at [`docs/project_report.pdf`](docs/project_report.pdf).
 
-**Key Finding:** Random walk baselines consistently outperformed more complex models—improvements from ARIMA and GARCH were marginal (<2% in most cases). This aligns with efficient market hypothesis. Proper validation methodology matters more than model sophistication.
+**Report Findings:** In the report's model selection (Table 22), random walk baselines were selected for 5 of the 7 commodity series. For series where ARIMA or GARCH models provided the best fit (Tranquillity and Slingshots), error improvements over random walk were modest (<2% in most series).
