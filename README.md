@@ -1,5 +1,8 @@
 # Commodity Price Forecasting
 
+Backtests a few forecasting models on commodity prices. The simplest one, random
+walk, turns out to be hard to beat.
+
 Rolling-origin evaluation framework for time series forecasting. Evaluates Random Walk and ARIMA mean models paired with constant variance baselines on commodity price data; ARCH and GARCH volatility models are implemented in `src/models.py` and evaluated in the accompanying report.
 
 ## Overview
